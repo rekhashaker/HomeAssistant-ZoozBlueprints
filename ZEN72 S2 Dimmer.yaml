@@ -4,7 +4,7 @@ blueprint:
   homeassistant: { min_version: 2023.3.1 }
   domain: automation
   description: >
-    Setup actions for all the different key press combinations on the Zooz ZEN77 S2 700-series dimmer.
+    Setup actions for all the different key press combinations on the Zooz ZEN77 S2 800-series dimmer.
 
 
     Other features:
