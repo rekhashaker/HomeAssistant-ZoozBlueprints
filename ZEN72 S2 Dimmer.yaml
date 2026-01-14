@@ -61,7 +61,15 @@ blueprint:
     button_2_5x:      { name: "Paddle Down press 5x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed five times." }
     button_2_hold:    { name: "Paddle Down hold",     default: [], selector: { action: {} }, description: "Action to run when the button is held. Default: Decrease dimmer brightness level." }
     button_2_release: { name: "Paddle Down release",  default: [], selector: { action: {} }, description: "Action to run when the button is released." }
-
+    
+    button_3_1x:      { name: "Paddle Down press 1x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed one time. Default: Turn off load." }
+    button_3_2x:      { name: "Paddle Down press 2x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed two times." }
+    button_3_3x:      { name: "Paddle Down press 3x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed three times. Note: Requires firmware 10.0+." }
+    button_3_4x:      { name: "Paddle Down press 4x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed four times." }
+    button_3_5x:      { name: "Paddle Down press 5x", default: [], selector: { action: {} }, description: "Action to run when the button is pressed five times." }
+    button_3_hold:    { name: "Paddle Down hold",     default: [], selector: { action: {} }, description: "Action to run when the button is held. Default: Decrease dimmer brightness level." }
+    button_3_release: { name: "Paddle Down release",  default: [], selector: { action: {} }, description: "Action to run when the button is released." }
+ 
 mode: parallel
 max_exceeded: silent
 
@@ -137,3 +145,13 @@ action:
               - { conditions: "{{ event_action == 'KeyPressed5x' }}", sequence: !input button_2_5x }
               - { conditions: "{{ event_action == 'KeyHeldDown' }}",  sequence: !input button_2_hold }
               - { conditions: "{{ event_action == 'KeyReleased' }}",  sequence: !input button_2_release }
+      - conditions: "{{ scene_id == 'Scene 003' }}"
+        sequence:
+          - choose:
+              - { conditions: "{{ event_action == 'KeyPressed' }}",   sequence: !input button_3_1x }
+              - { conditions: "{{ event_action == 'KeyPressed2x' }}", sequence: !input button_3_2x }
+              - { conditions: "{{ event_action == 'KeyPressed3x' }}", sequence: !input button_3_3x }
+              - { conditions: "{{ event_action == 'KeyPressed4x' }}", sequence: !input button_3_4x }
+              - { conditions: "{{ event_action == 'KeyPressed5x' }}", sequence: !input button_3_5x }
+              - { conditions: "{{ event_action == 'KeyHeldDown' }}",  sequence: !input button_3_hold }
+              - { conditions: "{{ event_action == 'KeyReleased' }}",  sequence: !input button_3_release }
